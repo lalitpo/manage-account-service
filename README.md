@@ -74,7 +74,7 @@ Below is an example of how you can set up the project on your local machine.
     mvn clean install
     ```
 3. Run docker containers for PostgreSQL database.
-   Docker containers for each of them are configured in docker-compose.yml file at
+   Docker containers for database is configured in docker-compose.yml file at
    manage-account-infra/docker/docker-compose.yml location.
 
     ```
@@ -86,13 +86,15 @@ Below is an example of how you can set up the project on your local machine.
    directly from the IDE.
    However, in case, you want a separate UI for it, use [pgAdmin](https://www.pgadmin.org)
 
-5. Run the application by running file : ManageAccountApplication.java located at
-   manage-account-app/src/main/java/com/finmid/manageaccountapp/ManageAccountApplication.java
+5. . **Run the Application:**
+   - Run the application by executing the file `ManageAccountApplication.java` located at:
+     `manage-account-app/src/main/java/com/finmid/manageaccountapp/ManageAccountApplication.java`
 
-    1. In your favourite REST API client, like [Postman](https://www.postman.com/), you can test below REST APIs to test
-       the functionalities of the application.
-    2. Sample Requests and detailed information is documented for each REST API in a swagger file manage-account-service.yaml in the root directory. You can access it using Swagger UI or any other Swagger UI compatible tool.
+6. **Testing the Application:**
+   - Using your favorite REST API client, such as [Postman](https://www.postman.com/), you can test the functionality of the application by sending requests to the following REST APIs.
 
+7. **Swagger Documentation:**
+   - Detailed information and sample requests for each REST API are documented in the Swagger file `manage-account-service.yaml` located in the root directory. You can access this documentation using Swagger UI or any other Swagger UI compatible tool.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Improvements
