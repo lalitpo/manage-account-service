@@ -1,0 +1,124 @@
+openapi: 3.0.0
+info:
+  title: manage-account
+  description: manage-account is a service that allows users to create accounts and perform transactions.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /users/create:
+    post:
+      tags:
+        - General
+      summary: createUser
+      description: Creates a new user account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accountId:
+                  type: string
+                  example: "user123"
+                balance:
+                  type: number
+                  format: double
+                  example: 100.0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+              example: User account creation failed.
+
+  /users/accounts/{accountId}:
+    get:
+      tags:
+        - General
+      summary: getAccountInfo
+      description: Retrieves the account balance for an existing user.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: ID of the account to retrieve
+          schema:
+            type: string
+            example: "user123"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+              example: User Account balance could not be retrieved .
+
+  /transactions/createTransaction:
+    post:
+      tags:
+        - General
+      summary: createTransaction
+      description: Performs transaction or transfer of money from one user to another user account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  format: double
+                  example: 11.02
+                fromAccountId:
+                  type: string
+                  example: "user123"
+                toAccountId:
+                  type: string
+                  example: "user456"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Transaction failed.
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        accountId:
+          type: string
+        balance:
+          type: number
+          format: double
+    Transaction:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        fromAccountId:
+          type: string
+        toAccountId:
+          type: string
